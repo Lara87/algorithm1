@@ -20,9 +20,9 @@ const int INIT_VALUE = 15;
 const int MAX_RANDOM_VALUE = 700;
 int val = 3;
 
-default_random_engine gen(unsigned(time(0)));//стандартный датчик случайных чисел, инициализация при объявлении
+default_random_engine gen(unsigned(time(0)));//СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РґР°С‚С‡РёРє СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР», РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїСЂРё РѕР±СЉСЏРІР»РµРЅРёРё
 
-chrono::time_point<chrono::steady_clock> start;//steady_clock –  монотонные часы - рекомендации учебников
+chrono::time_point<chrono::steady_clock> start;//steady_clock вЂ“  РјРѕРЅРѕС‚РѕРЅРЅС‹Рµ С‡Р°СЃС‹ - СЂРµРєРѕРјРµРЅРґР°С†РёРё СѓС‡РµР±РЅРёРєРѕРІ
 
 void beginProfile()
 {
@@ -31,9 +31,9 @@ void beginProfile()
 
 void endProfile(string message)
 {
-	/* auto: при инициализации переменной оно может использоваться вместо типа переменной,
-	чтобы сообщить компилятору, что он должен присвоить тип переменной исходя из инициализируемого значения.
-	Это называется выводом типа (или автоматическим определением типов данных компилятором).*/
+	/* auto: РїСЂРё РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РїРµСЂРµРјРµРЅРЅРѕР№ РѕРЅРѕ РјРѕР¶РµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РІРјРµСЃС‚Рѕ С‚РёРїР° РїРµСЂРµРјРµРЅРЅРѕР№,
+	С‡С‚РѕР±С‹ СЃРѕРѕР±С‰РёС‚СЊ РєРѕРјРїРёР»СЏС‚РѕСЂСѓ, С‡С‚Рѕ РѕРЅ РґРѕР»Р¶РµРЅ РїСЂРёСЃРІРѕРёС‚СЊ С‚РёРї РїРµСЂРµРјРµРЅРЅРѕР№ РёСЃС…РѕРґСЏ РёР· РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРјРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ.
+	Р­С‚Рѕ РЅР°Р·С‹РІР°РµС‚СЃСЏ РІС‹РІРѕРґРѕРј С‚РёРїР° (РёР»Рё Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёРј РѕРїСЂРµРґРµР»РµРЅРёРµРј С‚РёРїРѕРІ РґР°РЅРЅС‹С… РєРѕРјРїРёР»СЏС‚РѕСЂРѕРј).*/
 
 	auto finish = chrono::steady_clock::now();
 	auto t = chrono::duration_cast<chrono::milliseconds>(finish - start);
@@ -50,7 +50,7 @@ int double_val(int val)
 int main(int argc, char *argv[])
 {
 	setlocale(LC_ALL, "Russian");
-	cout << "Лабораторная работа выполнена студенткой ЗИНРБ-31 Черниковой Л.В." << endl;
+	cout << "Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° РІС‹РїРѕР»РЅРµРЅР° СЃС‚СѓРґРµРЅС‚РєРѕР№ Р—РРќР Р‘-31 Р§РµСЂРЅРёРєРѕРІРѕР№ Р›.Р’." << endl;
 	cout << endl;
 	system("pause");
 	cout <<""<< endl;
@@ -61,39 +61,39 @@ int main(int argc, char *argv[])
 	vector <int> container1(CONTAINER_SIZE, INIT_VALUE), container2(CONTAINER_SIZE, INIT_VALUE);
 	
 	/*1.1*/
-	/*beginProfile();
+	beginProfile();
 	
-	endProfile("Инициализация при объявлении");
+	endProfile("РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїСЂРё РѕР±СЉСЏРІР»РµРЅРёРё");
 	cout << "" << endl;
 	
 	beginProfile();
 	for (auto iter = container1.begin(); iter != container1.end(); iter++)
 		*iter = INIT_VALUE;
-	endProfile("Явный цикл с использованием итераторов");
+	endProfile("РЇРІРЅС‹Р№ С†РёРєР» СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РёС‚РµСЂР°С‚РѕСЂРѕРІ");
 	cout << "" << endl;
 	
 	beginProfile();
 	for (auto i = 0; i < CONTAINER_SIZE; ++i)
 	container1.push_front(INIT_VALUE);
-	endProfile("Инициализация посредством добавления элементов в контейнер");
+	endProfile("РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕСЃСЂРµРґСЃС‚РІРѕРј РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РІ РєРѕРЅС‚РµР№РЅРµСЂ");
 	cout << "" << endl;
 	
 	beginProfile();
-	/*Заменяет содержимое контейнера. 1) заменяет содержимое с count копии значения value 2) заменяет содержимое с копиями тех, кто в диапазоне[first, last)*/
-	/*container1.assign(CONTAINER_SIZE, INIT_VALUE);//void assign( size_type count, const T& value );
-	endProfile("Присвоение значений методом assign()");//заменяет содержимое контейнера
-	cout << "" << endl;*/
+	/*Р—Р°РјРµРЅСЏРµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ РєРѕРЅС‚РµР№РЅРµСЂР°. 1) Р·Р°РјРµРЅСЏРµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ СЃ count РєРѕРїРёРё Р·РЅР°С‡РµРЅРёСЏ value 2) Р·Р°РјРµРЅСЏРµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ СЃ РєРѕРїРёСЏРјРё С‚РµС…, РєС‚Рѕ РІ РґРёР°РїР°Р·РѕРЅРµ[first, last)*/
+	container1.assign(CONTAINER_SIZE, INIT_VALUE);//void assign( size_type count, const T& value );
+	endProfile("РџСЂРёСЃРІРѕРµРЅРёРµ Р·РЅР°С‡РµРЅРёР№ РјРµС‚РѕРґРѕРј assign()");//Р·Р°РјРµРЅСЏРµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ РєРѕРЅС‚РµР№РЅРµСЂР°
+	cout << "" << endl;
 
 	
-	/*beginProfile();
-	fill(container1.begin(), container1.end(), INIT_VALUE);//присваивает определенное значение набору элементов 
-	endProfile("Aлгоритм fill(): присваивает определенное значение набору элементов");
+	beginProfile();
+	fill(container1.begin(), container1.end(), INIT_VALUE);//РїСЂРёСЃРІР°РёРІР°РµС‚ РѕРїСЂРµРґРµР»РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РЅР°Р±РѕСЂСѓ СЌР»РµРјРµРЅС‚РѕРІ 
+	endProfile("AР»РіРѕСЂРёС‚Рј fill(): РїСЂРёСЃРІР°РёРІР°РµС‚ РѕРїСЂРµРґРµР»РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РЅР°Р±РѕСЂСѓ СЌР»РµРјРµРЅС‚РѕРІ");
 	cout << "" << endl;
 	
 	
 	beginProfile();
-	fill_n(container1.begin(), CONTAINER_SIZE, INIT_VALUE);//присваивает значение заданному числу элементов 
-	endProfile("Aлгоритм fill_n(): присваивает значение заданному числу элементов");
+	fill_n(container1.begin(), CONTAINER_SIZE, INIT_VALUE);//РїСЂРёСЃРІР°РёРІР°РµС‚ Р·РЅР°С‡РµРЅРёРµ Р·Р°РґР°РЅРЅРѕРјСѓ С‡РёСЃР»Сѓ СЌР»РµРјРµРЅС‚РѕРІ 
+	endProfile("AР»РіРѕСЂРёС‚Рј fill_n(): РїСЂРёСЃРІР°РёРІР°РµС‚ Р·РЅР°С‡РµРЅРёРµ Р·Р°РґР°РЅРЅРѕРјСѓ С‡РёСЃР»Сѓ СЌР»РµРјРµРЅС‚РѕРІ");
 	cout << "" << endl;
 	
 	beginProfile();
@@ -101,109 +101,109 @@ int main(int argc, char *argv[])
 	for (int elem : container2) {
 		elem = INIT_VALUE;
 	}
-	endProfile("Цикл для контейнеров");
+	endProfile("Р¦РёРєР» РґР»СЏ РєРѕРЅС‚РµР№РЅРµСЂРѕРІ");
 	cout << "" << endl;
 	
 	
 
 	/* 1.2.*/
 	
-	/*beginProfile();
+	beginProfile();
 	for (auto iter = container1.begin(); iter != container1.end(); iter++)
 		*iter = ++val;
-	endProfile("Заполнение возрастающими значениями явный цикл с использованием итераторов");
+	endProfile("Р—Р°РїРѕР»РЅРµРЅРёРµ РІРѕР·СЂР°СЃС‚Р°СЋС‰РёРјРё Р·РЅР°С‡РµРЅРёСЏРјРё СЏРІРЅС‹Р№ С†РёРєР» СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РёС‚РµСЂР°С‚РѕСЂРѕРІ");
 	cout << "" << endl;
 	
 	beginProfile();
 	for (double &elem : container1) {
 		elem = ++val;
 	}
-	endProfile("Цикл для контейнеров");
+	endProfile("Р¦РёРєР» РґР»СЏ РєРѕРЅС‚РµР№РЅРµСЂРѕРІ");
 	cout << "" << endl;
 
 	beginProfile();
 	fill(container1.begin(), container1.end(), val);
-	for (double &elem : container1)//здесь заполняем контейнер первый возрастающими значениями
+	for (double &elem : container1)//Р·РґРµСЃСЊ Р·Р°РїРѕР»РЅСЏРµРј РєРѕРЅС‚РµР№РЅРµСЂ РїРµСЂРІС‹Р№ РІРѕР·СЂР°СЃС‚Р°СЋС‰РёРјРё Р·РЅР°С‡РµРЅРёСЏРјРё
 	{
 		elem = ++val;
-	}//в контейнере 1 лежат возрастающие значения, в контейнере 2 - знач INIT_VALUE
-	partial_sum(container1.begin(), container1.end(), container2.begin());//все значения контейнера 1 sum  и положили в контейнер 2
-	endProfile("Алгоритмы fill()+partial_sum()");
+	}//РІ РєРѕРЅС‚РµР№РЅРµСЂРµ 1 Р»РµР¶Р°С‚ РІРѕР·СЂР°СЃС‚Р°СЋС‰РёРµ Р·РЅР°С‡РµРЅРёСЏ, РІ РєРѕРЅС‚РµР№РЅРµСЂРµ 2 - Р·РЅР°С‡ INIT_VALUE
+	partial_sum(container1.begin(), container1.end(), container2.begin());//РІСЃРµ Р·РЅР°С‡РµРЅРёСЏ РєРѕРЅС‚РµР№РЅРµСЂР° 1 sum  Рё РїРѕР»РѕР¶РёР»Рё РІ РєРѕРЅС‚РµР№РЅРµСЂ 2
+	endProfile("РђР»РіРѕСЂРёС‚РјС‹ fill()+partial_sum()");
 	cout << "" << endl;
 	
 	beginProfile();
 	fill(container1.begin(), container1.end(), val);
-	for (double &elem : container1)//здесь заполняем контейнер первый возрастающими значениями
+	for (double &elem : container1)//Р·РґРµСЃСЊ Р·Р°РїРѕР»РЅСЏРµРј РєРѕРЅС‚РµР№РЅРµСЂ РїРµСЂРІС‹Р№ РІРѕР·СЂР°СЃС‚Р°СЋС‰РёРјРё Р·РЅР°С‡РµРЅРёСЏРјРё
 	{
 		elem =++val;
-	}//в контейнере 1 лежат возрастающие значения, в контейнере 2 - знач INIT_VALUE
+	}//РІ РєРѕРЅС‚РµР№РЅРµСЂРµ 1 Р»РµР¶Р°С‚ РІРѕР·СЂР°СЃС‚Р°СЋС‰РёРµ Р·РЅР°С‡РµРЅРёСЏ, РІ РєРѕРЅС‚РµР№РЅРµСЂРµ 2 - Р·РЅР°С‡ INIT_VALUE
 	transform(container1.begin(), container1.end(), container2.begin(), double_val);
-	endProfile("Алгоритмы fill()+transform()");//в первом контейнере последовательно, во втором +2
+	endProfile("РђР»РіРѕСЂРёС‚РјС‹ fill()+transform()");//РІ РїРµСЂРІРѕРј РєРѕРЅС‚РµР№РЅРµСЂРµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕ, РІРѕ РІС‚РѕСЂРѕРј +2
 	cout << "" << endl;
 
 	beginProfile();
 	iota(container1.begin(), container1.end(), INIT_VALUE);//iota(l.begin(), l.end(), -4);
-	endProfile("Алгоритмы iota()");
-	cout << "" << endl;*/
+	endProfile("РђР»РіРѕСЂРёС‚РјС‹ iota()");
+	cout << "" << endl;
 	
 
 	//1.3
-	/*beginProfile();
+	beginProfile();
 	for (auto iter = container1.begin(); iter != container1.end(); iter++)
 		*iter = gen() % MAX_RANDOM_VALUE;
-	endProfile("Явный цикл с использованием итераторов");
+	endProfile("РЇРІРЅС‹Р№ С†РёРєР» СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РёС‚РµСЂР°С‚РѕСЂРѕРІ");
 	cout << endl;
 	
 	beginProfile();
-	/*заполняет диапазон, ограниченный парой итераторов [first,last),путем последовательного вызова gen, который может быть объектом-функцией или
-	указателем на функцию*/
-	/*generate(container1.begin(), container1.end(), gen);//void generate( ForwardIt first, ForwardIt last, Generator g )
-	endProfile("Алгоритм generate");
+	/*Р·Р°РїРѕР»РЅСЏРµС‚ РґРёР°РїР°Р·РѕРЅ, РѕРіСЂР°РЅРёС‡РµРЅРЅС‹Р№ РїР°СЂРѕР№ РёС‚РµСЂР°С‚РѕСЂРѕРІ [first,last),РїСѓС‚РµРј РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕРіРѕ РІС‹Р·РѕРІР° gen, РєРѕС‚РѕСЂС‹Р№ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЉРµРєС‚РѕРј-С„СѓРЅРєС†РёРµР№ РёР»Рё
+	СѓРєР°Р·Р°С‚РµР»РµРј РЅР° С„СѓРЅРєС†РёСЋ*/
+	generate(container1.begin(), container1.end(), gen);//void generate( ForwardIt first, ForwardIt last, Generator g )
+	endProfile("РђР»РіРѕСЂРёС‚Рј generate");
 	cout << endl;
 	
 	beginProfile();
 	generate_n(container1.begin(), CONTAINER_SIZE, gen);//void generate_n( OutputIt first, Size count, Generator g )
-	endProfile("Алгоритм generate_n");
+	endProfile("РђР»РіРѕСЂРёС‚Рј generate_n");
 	cout << endl;
 	
 	beginProfile();
 	iota(container1.begin(), container1.end(), INIT_VALUE);
 	//shuffle(container1.begin(), container1.end(), gen);
-	endProfile("iota, а shuffle у list невозможен");
-	cout << endl;*/
+	endProfile("iota, Р° shuffle Сѓ list РЅРµРІРѕР·РјРѕР¶РµРЅ");
+	cout << endl;
 	
 	//2.1 & 2.2
 	beginProfile();
 	for (auto iter = container1.begin(); iter != container1.end(); iter++)
 	*iter = gen() % MAX_RANDOM_VALUE;
 	container2 = container1;
-	endProfile("Копирование присваиванием");
+	endProfile("РљРѕРїРёСЂРѕРІР°РЅРёРµ РїСЂРёСЃРІР°РёРІР°РЅРёРµРј");
 	container2.clear();
 
 	beginProfile();
 	for (auto iter = container1.begin(); iter != container1.end(); iter++)
 	*iter = gen() % MAX_RANDOM_VALUE;
 	copy(container1.begin(), container1.end(), inserter(container2, container2.begin()));
-	endProfile("Алгоритм copy()");
+	endProfile("РђР»РіРѕСЂРёС‚Рј copy()");
 	container2.clear();
 
 	beginProfile();
 	for (auto iter = container1.begin(); iter != container1.end(); iter++)
 	*iter = gen() % MAX_RANDOM_VALUE;
 	transform(container1.rbegin(), container1.rend(), back_inserter(container2), [](int n) {return n; });
-	endProfile("Алгоритм transform()");
+	endProfile("РђР»РіРѕСЂРёС‚Рј transform()");
 
 
 	beginProfile();
-	for (int &elem : container1)//здесь заполняем контейнер первый возрастающими значениями
+	for (int &elem : container1)//Р·РґРµСЃСЊ Р·Р°РїРѕР»РЅСЏРµРј РєРѕРЅС‚РµР№РЅРµСЂ РїРµСЂРІС‹Р№ РІРѕР·СЂР°СЃС‚Р°СЋС‰РёРјРё Р·РЅР°С‡РµРЅРёСЏРјРё
 	{
 	elem = ++val;
 	}
 	copy_backward(container1.begin(), container1.end(), container2.rend());
-	endProfile("Алгоритм copy_backward()");
+	endProfile("РђР»РіРѕСЂРёС‚Рј copy_backward()");
 
 	beginProfile();
-	for (int &elem : container1)//здесь заполняем контейнер первый возрастающими значениями
+	for (int &elem : container1)//Р·РґРµСЃСЊ Р·Р°РїРѕР»РЅСЏРµРј РєРѕРЅС‚РµР№РЅРµСЂ РїРµСЂРІС‹Р№ РІРѕР·СЂР°СЃС‚Р°СЋС‰РёРјРё Р·РЅР°С‡РµРЅРёСЏРјРё
 	{
 	elem = ++val;
 	}
@@ -218,7 +218,7 @@ int main(int argc, char *argv[])
 	auto t = container1;
 	reverse(container1.begin(), container1.end());
 	copy(container1.begin(), container1.end(), container2.begin());
-	endProfile("Копирование обратным итератором reverse+copy()");
+	endProfile("РљРѕРїРёСЂРѕРІР°РЅРёРµ РѕР±СЂР°С‚РЅС‹Рј РёС‚РµСЂР°С‚РѕСЂРѕРј reverse+copy()");
 
 	system("pause");
 }
